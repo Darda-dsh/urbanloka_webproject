@@ -1,4 +1,3 @@
-// Data produk
 const produk = [
   {
     nama: "Urban Hoodie",
@@ -19,7 +18,6 @@ const produk = [
 
 let keranjang = [];
 
-// Tampilkan produk
 function tampilkanProduk(data) {
   const container = document.getElementById("produk-list");
   container.innerHTML = "";
@@ -35,20 +33,17 @@ function tampilkanProduk(data) {
   });
 }
 
-// Filter produk berdasarkan kategori
 function filterProduk(kategori) {
   const hasil = produk.filter(p => p.kategori === kategori);
   tampilkanProduk(hasil);
 }
 
-// Tombol beli
 function beliProduk(index) {
   keranjang.push(produk[index]);
   alert(`${produk[index].nama} berhasil ditambahkan ke keranjang!`);
   console.log("Isi keranjang:", keranjang);
 }
 
-// Tombol Belanja Sekarang
 document.getElementById("btnBelanja").addEventListener("click", () => {
   window.scrollTo({
     top: document.body.scrollHeight,
@@ -56,5 +51,5 @@ document.getElementById("btnBelanja").addEventListener("click", () => {
   });
 });
 
-// Tampilkan semua produk saat halaman dibuka
+
 tampilkanProduk(produk);
