@@ -1,0 +1,100 @@
+/* Modern Layout Engine - URBANLOKA */
+:root {
+    --sidebar-width: 260px;
+    --gold: #D4AF37;
+    --noir: #0b0f19;
+    --slate: #0f172a;
+    --bg-main: #f8fafc;
+    --top-nav-height: 70px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* KUNCI agar padding gak nambah lebar elemen */
+}
+
+body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background-color: var(--bg-main);
+    color: var(--slate);
+    line-height: 1.5;
+}
+
+/* Container Utama */
+.app-wrapper {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+}
+
+/* Sidebar: Kunci Mati di Kiri */
+.sidebar-nav {
+    width: var(--sidebar-width);
+    background: var(--noir);
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1050; /* Di atas segalanya */
+    border-right: 1px solid rgba(212, 175, 55, 0.2);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Main Container: Beri Ruang untuk Sidebar */
+.main-container {
+    flex-grow: 1;
+    margin-left: var(--sidebar-width); /* Harus sama dengan sidebar-width */
+    width: calc(100% - var(--sidebar-width));
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+/* Page Content: Isi halaman */
+.page-content {
+    padding: 30px 40px; /* Jarak nyaman konten */
+    width: 100%;
+}
+
+/* Navigasi Item */
+.nav-item-link {
+    display: flex;
+    align-items: center;
+    padding: 14px 25px;
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.nav-item-link i {
+    width: 25px;
+    font-size: 1.1rem;
+}
+
+.nav-item-link:hover, 
+.nav-item-link.active {
+    background: rgba(212, 175, 55, 0.1);
+    color: var(--gold) !important;
+}
+
+/* Card Styling agar seragam */
+.card-custom {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    margin-bottom: 20px;
+}
+
+/* Responsive Fix */
+@media (max-width: 992px) {
+    .sidebar-nav { transform: translateX(-100%); transition: 0.3s; }
+    .main-container { margin-left: 0; width: 100%; }
+    .sidebar-active .sidebar-nav { transform: translateX(0); }
+}
